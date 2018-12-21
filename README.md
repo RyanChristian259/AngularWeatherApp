@@ -7,7 +7,7 @@ Mapquest api - https://developer.mapquest.com
 
 Dark sky api - https://darksky.net/dev
 
-Once you have your API keys from the above sites simply place them in the sample.contants.ts file where applicable. I have listed the locations as "Your key here". Then rename the file to `constants.ts`.
+Once you have your API keys from the above sites, simply create a new file called keys.ts in the keys folder, copy the constants in the sample.keys.ts file into the new keys.ts file, and place your keys in the new file where applicable. I have listed the locations as "Your key here".
 
 ### Don't forget to add `constants.*` to your .gitignore file so that you don't push your api keys up to github.
 
