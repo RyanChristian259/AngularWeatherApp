@@ -1,4 +1,19 @@
-# Angular4WeatherCli
+# Angular Weather App
+This is a weather widget that showcases HTTP calls with Angular 4.
+
+### In order for the HTTP calls to work you must sign up for the google maps api and the dark sky api.
+
+Mapquest api - https://developer.mapquest.com
+
+Dark sky api - https://darksky.net/dev
+
+Once you have your API keys from the above sites simply place them in the sample.contants.ts file where applicable. I have listed the locations as "Your key here". Then rename the file to `constants.ts`.
+
+### Don't forget to add `constants.*` to your .gitignore file so that you don't push your api keys up to github.
+
+
+
+![screen shot 2017-12-21 at 2 23 14 pm](https://user-images.githubusercontent.com/10776779/34275689-a5db4b1c-e65b-11e7-9aae-cd98058cc537.png)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
 
