@@ -10,6 +10,7 @@ constants.*
 
 # dependencies
 /node_modules
+/package-lock.json
 app/keys/keys.ts
 
 # IDEs and editors
