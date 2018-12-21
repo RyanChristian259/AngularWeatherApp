@@ -1,7 +1,13 @@
-// Populate this file with your Dark sky and Google maps keys
-// Then Rename it to constants.ts in order to make the HTTP calls work properly
+/**
+ * In order to get your API call working -
+ *  Go to the Mapquest api at https://developer.mapquest.com and the Dark sky api at https://darksky.net/dev
+ *  Sign up for free accounts.
+ *  Create a file called keys.ts in this folder. Copy the constants below into that file.
+ *  Replace your keys in the constants.
+ *  Do not push your keys up to Github!!!
+ */
 
 export const FORECAST_KEY = 'YOUR DARK SKY KEY HERE';
 export const FORECAST_ROOT = 'https://api.darksky.net/forecast/';
-export const GOOGLE_KEY = 'YOUR GOOGLE KEY HERE';
-export const GOOGLE_ROOT = 'https://maps.googleapis.com/maps/api/geocode/json';
+export const MAPQUEST_KEY = 'YOUR MAPQUEST KEY HERE';
+export const MAPQUEST_ROOT = 'http://www.mapquestapi.com/geocoding/v1/reverse';

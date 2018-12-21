@@ -1,6 +1,7 @@
 # See http://help.github.com/ignore-files/ for more about ignoring files.
 
 constants.*
+/src/app/keys/keys.ts
 
 # compiled output
 /dist
@@ -9,6 +10,7 @@ constants.*
 
 # dependencies
 /node_modules
+app/keys/keys.ts
 
 # IDEs and editors
 /.idea
