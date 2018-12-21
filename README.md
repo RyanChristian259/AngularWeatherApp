@@ -1,5 +1,5 @@
 # Angular Weather App
-This is a weather widget that showcases HTTP calls with Angular 4.
+This is a weather widget that showcases HTTP calls with Angular 6.
 
 ### In order for the HTTP calls to work you must sign up for the google maps api and the dark sky api.
 
