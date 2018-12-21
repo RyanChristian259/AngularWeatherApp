@@ -1,0 +1,80 @@
+.card {
+    box-shadow: 2px 2px 5px 0 rgba(0,0,0,.24);
+    transition: background-color .5s ease;
+}
+
+.card,
+.card-header,
+.card-footer {
+    border: none;
+    border-radius: 0;
+}
+
+.card-header,
+.card-footer {
+    padding: 1rem .5rem;
+    background-color: transparent;
+}
+
+#location-wrapper {
+    font-size: .9rem;
+}
+
+#location-icon {
+    padding-right: .5rem;
+}
+
+.card-block {
+    padding: 1.5rem 0;
+}
+
+#indicator {
+    height: 165px;
+    position: relative;
+}
+
+#incicator i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+}
+
+canvas {
+    max-width: 250px;
+    margin-bottom: 1rem;
+}
+
+.card-block,
+.card-footer {
+    text-align: center;
+}
+
+.card-footer {
+    padding-bottom: .5rem;
+}
+
+#detail-row {
+    font-size: .8rem;
+    padding-left: 1rem;
+}
+
+#helper-row {
+    padding-top: .5rem;
+    padding-left: 1rem;
+    cursor: pointer;
+}
+
+p {
+    margin: .2rem;
+}
+
+p:not(.unit-label) {
+    text-transform: uppercase;
+}
+
+.refresh-icon {
+    font-size: 1.2rem;
+    transform: rotate(180deg);
+}
