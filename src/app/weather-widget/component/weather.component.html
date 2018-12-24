@@ -1,34 +1,41 @@
 <div class="card text-center" style="width: 18rem;" [ngStyle]="setStyles()">
-    <div class="card-header" [class.invisible]="!dataReceived">
-        <div class="col-xs-7" id="location-wrapper">
-            <p><i id="location-icon" class="fa fa-map-marker" aria-hidden="true"></i>{{ currentLocation }}</p>
-        </div>
-        <div class="col-xs-5 text-xs-right">
-            <h2>{{ weatherData.temp | tempUnit: currentTempUnit | number: '.0-0' }}&deg;
-            </h2> 
-        </div>
+  <div class="card-header" [class.invisible]="!dataReceived">
+    <div class="col-xs-7" id="location-wrapper">
+      <p>
+        <i id="location-icon" class="fa fa-map-marker" aria-hidden="true"></i
+        >{{ currentLocation }}
+      </p>
     </div>
-    <div class="card-block">
-        <div id="indicator" [hidden]="dataReceived">
-            <i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
-            <span class="sr-only">Loading...</span>
-        </div>
-        <canvas id="icon" [hidden]="!dataReceived"></canvas>
-        <p>{{ weatherData.summary }}</p>
+    <div class="col-xs-5 text-xs-right">
+      <h2>
+        {{ weatherData.temp | tempUnit: currentTempUnit | number: '.0-0' }}&deg;
+      </h2>
     </div>
-    <div class="card-footer" [class.invisible]="!dataReceived">
-        <div class="row" id="detail-row">
-            <div class="col-xs-4">
-                <p>Wind</p>
-                <p class="unit-label">{{ weatherData.wind | speedUnit: currentSpeedUnit }}</p>
-            </div>
-            <div class="col-xs-4 offset-xs-2">
-                <p>Humidity</p>
-                <p>{{ weatherData.humidity | percent }}</p>
-            </div>
-        </div>
-        <div class="row" id="helper-row">
-            <small (click)="toggleUnits()" class="text-muted">click to switch between &deg;f/kph and &deg;c/mph</small>
-        </div>
+  </div>
+  <div class="card-block">
+    <div id="indicator" [hidden]="dataReceived">
+      <i class="fa fa-circle-o-notch fa-spin fa-4x fa-fw"></i>
+      <span class="sr-only">Loading...</span>
     </div>
+    <canvas id="icon" [hidden]="!dataReceived"></canvas>
+    <p>{{ weatherData.summary }}</p>
+  </div>
+  <div class="card-footer" [class.invisible]="!dataReceived">
+    <div class="row" id="detail-row">
+      <div class="col-sm">
+        <p>Wind</p>
+        <p class="unit-label">
+          {{ weatherData.wind | speedUnit: currentSpeedUnit }}
+        </p>
+      </div>
+      <div class="col-sm">
+        <p>Humidity</p>
+        <p>{{ weatherData.humidity | percent }}</p>
+      </div>
+    </div>
+    <div class="row" id="helper-row">
+      <div (click)="toggleUnits()" class="text-muted" class="col-sm">
+          click to switch between &deg;f/kph and &deg;c/mph</div>
+    </div>
+  </div>
 </div>
