@@ -33,7 +33,7 @@
     position: relative;
 }
 
-#incicator i {
+#indicator i {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -57,13 +57,12 @@ canvas {
 
 #detail-row {
     font-size: .8rem;
-    padding-left: 1rem;
 }
 
 #helper-row {
     padding-top: .5rem;
-    padding-left: 1rem;
     cursor: pointer;
+    font-size: 0.8rem;
 }
 
 p {
