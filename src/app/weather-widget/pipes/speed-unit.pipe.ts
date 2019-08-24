@@ -4,7 +4,7 @@ import { Pipe, PipeTransform } from '@angular/core';
   name: 'speedUnit'
 })
 export class SpeedUnitPipe implements PipeTransform {
-  transform(speed: number, unitType: string) {
+  public transform(speed: number, unitType: string) {
     switch (unitType) {
       case 'mph':
         const miles = Number(speed * 1.6).toFixed(0);

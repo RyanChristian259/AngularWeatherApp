@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
@@ -14,19 +14,19 @@ export class LocationService {
   constructor(private http: HttpClient) {}
 
   // Get the user's location
-  getCurrentLocation(): Observable<any> {
+  public getCurrentLocation(): Observable<any> {
     if (navigator.geolocation) {
-      return Observable.create(observer => {
+      return new Observable(observer => {
         navigator.geolocation.getCurrentPosition(pos => {
           observer.next(pos);
         }),
           catchError(err => {
             console.error('Unable to get location - ', err);
-            return Observable.throw(err);
+            return throwError(err);
           });
       });
     } else {
-      return Observable.throw('Geolocation is not available.');
+      return throwError('Geolocation is not available.');
     }
   }
 
@@ -44,7 +44,7 @@ export class LocationService {
       }),
       catchError(err => {
         console.error('Unable to get location - ', err);
-        return Observable.throw(err);
+        return throwError(err);
       })
     );
   }

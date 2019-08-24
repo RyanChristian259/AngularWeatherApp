@@ -7,6 +7,16 @@ import { WEATHER_COLORS } from '@app/weather-widget/constants/color-constants';
 // Enable use of Skycons javascript library
 declare var Skycons: any;
 
+export enum CurrentTempUnitEnum {
+  FAHRENHEIT = 'fahrenheit',
+  CELCIUS = 'celsius',
+}
+
+export enum CurrentSpeedUnitEnum {
+  KPH = 'kph',
+  MPH = 'mph',
+}
+
 @Component({
   selector: 'app-weather-widget',
   templateUrl: './weather.component.html',
@@ -16,8 +26,8 @@ declare var Skycons: any;
 export class WeatherComponent implements OnInit {
   position: Position;
   icons = new Skycons();
-  public currentSpeedUnit = 'mph';
-  public currentTempUnit = 'fahrenheit';
+  public currentSpeedUnit = CurrentSpeedUnitEnum.MPH;
+  public currentTempUnit = CurrentTempUnitEnum.FAHRENHEIT;
   public currentLocation = '';
   public dataReceived = false;
   public weatherData = new WeatherData(null, null, null, null, null);
@@ -28,7 +38,7 @@ export class WeatherComponent implements OnInit {
     this.getCurrentLocation();
   }
 
-  private getCurrentLocation() {
+  private getCurrentLocation(): void {
     this.locationService.getCurrentLocation().subscribe(
       position => {
         this.position = position;
@@ -39,7 +49,7 @@ export class WeatherComponent implements OnInit {
     );
   }
 
-  private getLocationName() {
+  private getLocationName(): void {
     this.locationService
       .getLocationName(
         this.position.coords.latitude,
@@ -54,7 +64,7 @@ export class WeatherComponent implements OnInit {
       });
   }
 
-  private getCurrentWeather() {
+  private getCurrentWeather(): void {
     this.weatherService
       .getCurrentWeather(
         this.position.coords.latitude,
@@ -74,24 +84,24 @@ export class WeatherComponent implements OnInit {
       );
   }
 
-  public toggleUnits() {
+  public toggleUnits(): void {
     this.toggleTempUnits();
     this.toggleSpeedUnits();
   }
 
   private toggleTempUnits() {
-    if (this.currentTempUnit === 'fahrenheit') {
-      this.currentTempUnit = 'celsius';
+    if (this.currentTempUnit === CurrentTempUnitEnum.FAHRENHEIT) {
+      this.currentTempUnit = CurrentTempUnitEnum.CELCIUS;
     } else {
-      this.currentTempUnit = 'fahrenheit';
+      this.currentTempUnit = CurrentTempUnitEnum.FAHRENHEIT;
     }
   }
 
   private toggleSpeedUnits() {
     if (this.currentSpeedUnit === 'kph') {
-      this.currentSpeedUnit = 'mph';
+      this.currentSpeedUnit = CurrentSpeedUnitEnum.MPH;
     } else {
-      this.currentSpeedUnit = 'kph';
+      this.currentSpeedUnit = CurrentSpeedUnitEnum.KPH;
     }
   }
 
