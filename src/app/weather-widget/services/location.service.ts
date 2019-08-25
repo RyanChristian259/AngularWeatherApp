@@ -13,7 +13,9 @@ import {
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  // Get the user's location
+  /**
+   * Get the user's location from the browser.
+   */
   public getCurrentLocation(): Observable<any> {
     if (navigator.geolocation) {
       return new Observable(observer => {
@@ -30,7 +32,11 @@ export class LocationService {
     }
   }
 
-  // Get the city name of the user's location
+  /**
+   * Get the city name of the user's location
+   * @param latitude - Numerical value from the location service
+   * @param longitude - Numerical value from the location service
+   */
   getLocationName(latitude: number, longitude: number): Observable<any> {
     const url = MAPQUEST_ROOT;
     const queryParams =

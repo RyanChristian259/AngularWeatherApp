@@ -24,18 +24,33 @@ export enum CurrentSpeedUnitEnum {
   providers: [WeatherService, LocationService]
 })
 export class WeatherComponent implements OnInit {
-  position: Position;
-  icons = new Skycons();
   public currentSpeedUnit = CurrentSpeedUnitEnum.MPH;
   public currentTempUnit = CurrentTempUnitEnum.FAHRENHEIT;
   public currentLocation = '';
   public dataReceived = false;
-  public weatherData = new WeatherData(null, null, null, null, null);
+  public weatherData: WeatherData = new WeatherData(null, null, null, null, null);
+  private icons = new Skycons();
+  private position: Position;
 
   constructor(private weatherService: WeatherService, private locationService: LocationService) {}
 
   ngOnInit() {
     this.getCurrentLocation();
+  }
+
+  public toggleUnits(): void {
+    this.toggleTempUnits();
+    this.toggleSpeedUnits();
+  }
+
+  private setStyles(): Object {
+    if (this.weatherData.icon) {
+      this.icons.color = WEATHER_COLORS[this.weatherData.icon]['color'];
+      return WEATHER_COLORS[this.weatherData.icon];
+    } else {
+      this.icons.color = WEATHER_COLORS['default']['color'];
+      return WEATHER_COLORS['default'];
+    }
   }
 
   private getCurrentLocation(): void {
@@ -84,11 +99,6 @@ export class WeatherComponent implements OnInit {
       );
   }
 
-  public toggleUnits(): void {
-    this.toggleTempUnits();
-    this.toggleSpeedUnits();
-  }
-
   private toggleTempUnits() {
     if (this.currentTempUnit === CurrentTempUnitEnum.FAHRENHEIT) {
       this.currentTempUnit = CurrentTempUnitEnum.CELCIUS;
@@ -108,15 +118,5 @@ export class WeatherComponent implements OnInit {
   private setIcon() {
     this.icons.add('icon', this.weatherData.icon);
     this.icons.play();
-  }
-
-  public setStyles(): Object {
-    if (this.weatherData.icon) {
-      this.icons.color = WEATHER_COLORS[this.weatherData.icon]['color'];
-      return WEATHER_COLORS[this.weatherData.icon];
-    } else {
-      this.icons.color = WEATHER_COLORS['default']['color'];
-      return WEATHER_COLORS['default'];
-    }
   }
 }
