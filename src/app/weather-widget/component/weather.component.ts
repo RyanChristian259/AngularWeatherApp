@@ -20,7 +20,7 @@ export enum CurrentSpeedUnitEnum {
 @Component({
   selector: 'app-weather-widget',
   templateUrl: './weather.component.html',
-  styleUrls: ['./weather.component.css'],
+  styleUrls: ['./weather.component.scss'],
   providers: [WeatherService, LocationService]
 })
 export class WeatherComponent implements OnInit {
