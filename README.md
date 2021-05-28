@@ -1,5 +1,5 @@
 # Angular Weather App
-This is a weather widget that showcases HTTP calls with Angular 6.
+This is a weather widget that showcases HTTP calls with Angular 12.
 
 ### In order for the HTTP calls to work you must sign up for the Mapquest api and the dark sky api.
 
@@ -9,14 +9,17 @@ Dark sky api - https://darksky.net/dev
 
 Once you have your API keys from the above sites, simply create a new file called keys.ts in the keys folder, copy the constants in the sample.keys.ts file into the new keys.ts file, and place your keys in the new file where applicable. I have listed the locations as "Your key here".
 
-### Don't forget to add `constants.*` to your .gitignore file so that you don't push your api keys up to github.
+### Don't forget to add `constants.*` and `keys.*` to your .gitignore file so that you don't push your api keys up to github.
 
 
 
 ![screen shot 2017-12-21 at 2 23 14 pm](https://user-images.githubusercontent.com/10776779/34275689-a5db4b1c-e65b-11e7-9aae-cd98058cc537.png)
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.3.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.2.
 
+## Before starting dev server
+
+Run `npm install` (or `npm i` for short) in order to install your dependencies.
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

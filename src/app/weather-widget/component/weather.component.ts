@@ -7,14 +7,14 @@ import { WEATHER_COLORS } from '@app/weather-widget/constants/color-constants';
 // Enable use of Skycons javascript library
 declare var Skycons: any;
 
-export enum CurrentTempUnitEnum {
+export enum ECurrentTempUnitEnum {
   FAHRENHEIT = 'fahrenheit',
-  CELCIUS = 'celsius',
+  CELCIUS = 'celsius'
 }
 
-export enum CurrentSpeedUnitEnum {
+export enum ECurrentSpeedUnitEnum {
   KPH = 'kph',
-  MPH = 'mph',
+  MPH = 'mph'
 }
 
 @Component({
@@ -24,13 +24,13 @@ export enum CurrentSpeedUnitEnum {
   providers: [WeatherService, LocationService]
 })
 export class WeatherComponent implements OnInit {
-  public currentSpeedUnit = CurrentSpeedUnitEnum.MPH;
-  public currentTempUnit = CurrentTempUnitEnum.FAHRENHEIT;
+  public currentSpeedUnit = ECurrentSpeedUnitEnum.MPH;
+  public currentTempUnit = ECurrentTempUnitEnum.FAHRENHEIT;
   public currentLocation = '';
   public dataReceived = false;
   public weatherData: WeatherData = new WeatherData(null, null, null, null, null);
   private icons = new Skycons();
-  private position: Position;
+  private position: GeolocationPosition;
 
   constructor(private weatherService: WeatherService, private locationService: LocationService) {}
 
@@ -43,7 +43,7 @@ export class WeatherComponent implements OnInit {
     this.toggleSpeedUnits();
   }
 
-  private setStyles(): Object {
+  public setStyles(): Object {
     if (this.weatherData.icon) {
       this.icons.color = WEATHER_COLORS[this.weatherData.icon]['color'];
       return WEATHER_COLORS[this.weatherData.icon];
@@ -54,64 +54,53 @@ export class WeatherComponent implements OnInit {
   }
 
   private getCurrentLocation(): void {
-    this.locationService.getCurrentLocation().subscribe(
-      position => {
+    this.locationService.getCurrentLocation().subscribe({
+      next: (position) => {
         this.position = position;
+        console.log(position);
         this.getCurrentWeather();
         this.getLocationName();
       },
-      err => console.error(err)
-    );
+      error: (err) => console.error(err)
+    });
   }
 
   private getLocationName(): void {
-    this.locationService
-      .getLocationName(
-        this.position.coords.latitude,
-        this.position.coords.longitude
-      )
-      .subscribe(location => {
-        this.currentLocation =
-          // Get city and state
-          location['results'][0]['locations'][0]['adminArea5'] +
-          ', ' +
-          location['results'][0]['locations'][0]['adminArea3'];
-      });
+    this.locationService.getLocationName(this.position.coords.latitude, this.position.coords.longitude).subscribe((location) => {
+      this.currentLocation =
+        // Get city and state
+        location['results'][0]['locations'][0]['adminArea5'] + ', ' + location['results'][0]['locations'][0]['adminArea3'];
+    });
   }
 
   private getCurrentWeather(): void {
-    this.weatherService
-      .getCurrentWeather(
-        this.position.coords.latitude,
-        this.position.coords.longitude
-      )
-      .subscribe(
-        weather => {
-          this.weatherData.temp = weather['currently']['temperature'];
-          this.weatherData.summary = weather['currently']['summary'];
-          this.weatherData.wind = weather['currently']['windSpeed'];
-          this.weatherData.humidity = weather['currently']['humidity'];
-          this.weatherData.icon = weather['currently']['icon'];
-          this.setIcon();
-          this.dataReceived = true;
-        },
-        err => console.error(err)
-      );
+    this.weatherService.getCurrentWeather(this.position.coords.latitude, this.position.coords.longitude).subscribe({
+      next: (weather) => {
+        this.weatherData.temp = weather['currently']['temperature'];
+        this.weatherData.summary = weather['currently']['summary'];
+        this.weatherData.wind = weather['currently']['windSpeed'];
+        this.weatherData.humidity = weather['currently']['humidity'];
+        this.weatherData.icon = weather['currently']['icon'];
+        this.setIcon();
+        this.dataReceived = true;
+      },
+      error: (err) => console.error(err)
+    });
   }
 
   private toggleTempUnits() {
-    if (this.currentTempUnit === CurrentTempUnitEnum.FAHRENHEIT) {
-      this.currentTempUnit = CurrentTempUnitEnum.CELCIUS;
+    if (this.currentTempUnit === ECurrentTempUnitEnum.FAHRENHEIT) {
+      this.currentTempUnit = ECurrentTempUnitEnum.CELCIUS;
     } else {
-      this.currentTempUnit = CurrentTempUnitEnum.FAHRENHEIT;
+      this.currentTempUnit = ECurrentTempUnitEnum.FAHRENHEIT;
     }
   }
 
   private toggleSpeedUnits() {
     if (this.currentSpeedUnit === 'kph') {
-      this.currentSpeedUnit = CurrentSpeedUnitEnum.MPH;
+      this.currentSpeedUnit = ECurrentSpeedUnitEnum.MPH;
     } else {
-      this.currentSpeedUnit = CurrentSpeedUnitEnum.KPH;
+      this.currentSpeedUnit = ECurrentSpeedUnitEnum.KPH;
     }
   }
 

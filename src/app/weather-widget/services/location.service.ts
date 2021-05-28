@@ -4,31 +4,26 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { map } from 'rxjs/operators';
 
-import {
-  MAPQUEST_KEY,
-  MAPQUEST_ROOT
-} from '@app/keys/keys';
+import { MAPQUEST_KEY, MAPQUEST_ROOT } from '@app/keys/keys';
 
 @Injectable()
 export class LocationService {
   constructor(private http: HttpClient) {}
 
-  /**
-   * Get the user's location from the browser.
-   */
+  /* Get user's location from the browser */
   public getCurrentLocation(): Observable<any> {
     if (navigator.geolocation) {
-      return new Observable(observer => {
-        navigator.geolocation.getCurrentPosition(pos => {
+      return new Observable((observer) => {
+        navigator.geolocation.getCurrentPosition((pos) => {
           observer.next(pos);
         }),
-          catchError(err => {
+          catchError((err) => {
             console.error('Unable to get location - ', err);
-            return throwError(err);
+            return catchError(err);
           });
       });
     } else {
-      return throwError('Geolocation is not available.');
+      throwError(() => new Error('Geolocation is not available.'));
     }
   }
 
@@ -40,15 +35,13 @@ export class LocationService {
   getLocationName(latitude: number, longitude: number): Observable<any> {
     const url = MAPQUEST_ROOT;
     const queryParams =
-      '?key=' +
-      MAPQUEST_KEY + '&location=' + latitude + ',' + longitude +
-      '&includeRoadMetadata=true&includeNearestIntersection=true';
+      '?key=' + MAPQUEST_KEY + '&location=' + latitude + ',' + longitude + '&includeRoadMetadata=true&includeNearestIntersection=true';
 
     return this.http.get(url + queryParams).pipe(
       map((location) => {
         return location;
       }),
-      catchError(err => {
+      catchError((err) => {
         console.error('Unable to get location - ', err);
         return throwError(err);
       })

@@ -20,11 +20,11 @@ export class WeatherService {
   public getCurrentWeather(latitude: number, longitude: number): Observable<any> {
     const url = FORECAST_ROOT + FORECAST_KEY + '/' + latitude + ',' + longitude;
     const queryParams = '?callback=JSONP_CALLBACK';
-      return this.http.jsonp(url + queryParams, 'callback').pipe(
-      map(data => data),
-      catchError(err => {
+    return this.http.jsonp(url + queryParams, 'callback').pipe(
+      map((data) => data),
+      catchError((err) => {
         console.error('Unable to get weather data - ', err);
-        return throwError(err.json());
+        return throwError(() => new Error(err.json()));
       })
     );
   }

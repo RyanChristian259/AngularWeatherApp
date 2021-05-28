@@ -1,79 +1,81 @@
-.card {
-  box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.24);
-  transition: background-color 0.5s ease;
-}
+.weather-widget {
+  &.card {
+    box-shadow: 2px 2px 5px 0 rgba(0, 0, 0, 0.24);
+    transition: background-color 0.5s ease;
+  }
 
-.card,
-.card-header,
-.card-footer {
-  border: none;
-  border-radius: 0;
-}
+  .card,
+  .card-header,
+  .card-footer {
+    border: none;
+    border-radius: 0;
+  }
 
-.card-header,
-.card-footer {
-  padding: 1rem 0.5rem;
-  background-color: transparent;
-}
+  .card-header,
+  .card-footer {
+    padding: 1rem 0.5rem;
+    background-color: transparent;
+  }
 
-#location-wrapper {
-  font-size: 0.9rem;
-}
+  #location-wrapper {
+    font-size: 0.9rem;
+  }
 
-#location-icon {
-  padding-right: 0.5rem;
-}
+  #location-icon {
+    padding-right: 0.5rem;
+  }
 
-.card-block {
-  padding: 1.5rem 0;
-}
+  .card-block {
+    padding: 1.5rem 0;
+  }
 
-#indicator {
-  height: 165px;
-  position: relative;
-}
+  #indicator {
+    height: 165px;
+    position: relative;
+  }
 
-#indicator i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 50%;
-  margin: -15% 0 0 -25%;
-}
+  #indicator i {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 50%;
+    margin: -15% 0 0 -25%;
+  }
 
-canvas {
-  max-width: 250px;
-  margin-bottom: 1rem;
-}
+  canvas {
+    max-width: 250px;
+    margin-bottom: 1rem;
+  }
 
-.card-block,
-.card-footer {
-  text-align: center;
-}
+  .card-block,
+  .card-footer {
+    text-align: center;
+  }
 
-.card-footer {
-  padding-bottom: 0.5rem;
-}
+  .card-footer {
+    padding-bottom: 0.5rem;
+  }
 
-#detail-row {
-  font-size: 0.8rem;
-}
+  #detail-row {
+    font-size: 0.8rem;
+  }
 
-#helper-row {
-  padding-top: 0.5rem;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
+  #helper-row {
+    padding-top: 0.5rem;
+    cursor: pointer;
+    font-size: 0.8rem;
+  }
 
-p {
-  margin: 0.2rem;
-}
+  p {
+    margin: 0.2rem;
+  }
 
-p:not(.unit-label) {
-  text-transform: uppercase;
-}
+  p:not(.unit-label) {
+    text-transform: uppercase;
+  }
 
-.refresh-icon {
-  font-size: 1.2rem;
-  transform: rotate(180deg);
+  .refresh-icon {
+    font-size: 1.2rem;
+    transform: rotate(180deg);
+  }
 }

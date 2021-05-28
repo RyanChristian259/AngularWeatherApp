@@ -1,9 +1,9 @@
-<div class="card text-center" style="width: 18rem;" [ngStyle]="setStyles()">
+<div class="weather-widget card text-center" style="width: 18rem;" [ngStyle]="setStyles()">
   <div class="card-header" [class.invisible]="!dataReceived">
     <div class="col-xs-7" id="location-wrapper">
       <p>
-        <i id="location-icon" class="fa fa-map-marker" aria-hidden="true"></i
-        >{{ currentLocation }}
+        <i id="location-icon" class="fa fa-map-marker" aria-hidden="true"></i>
+        {{ currentLocation }}
       </p>
     </div>
     <div class="col-xs-5 text-xs-right">
